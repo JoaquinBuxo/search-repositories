@@ -14,3 +14,8 @@ export interface Repository {
   language: string;
   stargazers_count: number;
 }
+
+export interface RepositoriesResponse {
+  data: Repository[];
+  totalPages: number;
+}
