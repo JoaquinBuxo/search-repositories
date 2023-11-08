@@ -1,11 +1,11 @@
 const API_BASE_URL = 'https://api.github.com';
 
-const MAX_RESULTS = 1000;
+const MAX_RESULTS = 1200;
 
 export const fetchRepositories = async (
   query: string,
   pageParam: number = 1,
-  itemsPerPage: number = 10
+  itemsPerPage: number = 12
 ) => {
   try {
     const response = await fetch(
