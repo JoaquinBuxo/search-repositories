@@ -1,17 +1,11 @@
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { fetchRepositories } from '../services/githubService';
 import { RepositoriesResponse } from '../types';
 
-export const useRepositories = (query: string) => {
-  return useInfiniteQuery<RepositoriesResponse, Error>({
-    queryKey: ['repositories', query],
-    queryFn: ({ pageParam = 1 }) =>
-      fetchRepositories(query, pageParam as number),
-    getNextPageParam: (lastPage, allPages) => {
-      const nextPage = allPages.length + 1;
-      return nextPage <= lastPage.totalPages ? nextPage : undefined;
-    },
+export const useRepositories = (query: string, page: number) => {
+  return useQuery<RepositoriesResponse, Error>({
+    queryKey: ['repositories', query, page],
+    queryFn: () => fetchRepositories(query, page),
     enabled: !!query,
-    initialPageParam: 1,
   });
 };
