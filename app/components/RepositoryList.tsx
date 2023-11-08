@@ -9,7 +9,12 @@ const RepositoryList: React.FC<RepositoryListProps> = ({ repositories }) => {
   return (
     <div>
       {repositories.map((repo) => (
-        <div key={repo.id}>
+        <a
+          key={repo.id}
+          href={repo.html_url}
+          target='_blank'
+          rel='noopener noreferrer'
+        >
           <Image
             src={repo.owner.avatar_url}
             alt={repo.owner.login}
@@ -24,7 +29,7 @@ const RepositoryList: React.FC<RepositoryListProps> = ({ repositories }) => {
           <p>Topics: {repo.topics.join(', ')}</p>
           <p>Language: {repo.language}</p>
           <p>Stars: {repo.stargazers_count}</p>
-        </div>
+        </a>
       ))}
     </div>
   );

@@ -13,6 +13,7 @@ export interface Repository {
   topics: string[];
   language: string;
   stargazers_count: number;
+  html_url: string;
 }
 
 export interface RepositoriesResponse {
