@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRepositories } from './hooks/useRepositories';
 import SearchBar from './components/SearchBar';
 import RepositoryList from './components/RepositoryList';
-import { Pagination } from '@mui/material';
+import { Pagination, Container, AppBar, Toolbar, Box } from '@mui/material';
 
 export default function Home() {
   const [query, setQuery] = useState('');
@@ -19,16 +19,32 @@ export default function Home() {
   if (isError) return <p>Error: {error.message}</p>;
 
   return (
-    <div>
-      <SearchBar onSearch={setQuery} />
-      <RepositoryList repositories={data?.data || []} />
-      <Pagination
-        count={data?.totalPages || 1}
-        siblingCount={2}
-        page={page}
-        size='large'
-        onChange={handleChange}
-      />
-    </div>
+    <>
+      <AppBar
+        position='static'
+        sx={{ backgroundColor: '#F6F8FA', border: '1px solid #D9DFE4' }}
+        elevation={0}
+      >
+        <Toolbar>
+          <Box width='100%' px={2}>
+            <SearchBar onSearch={setQuery} />
+          </Box>
+        </Toolbar>
+      </AppBar>
+      <Container maxWidth='xl'>
+        <Box my={4}>
+          <RepositoryList repositories={data?.data || []} />
+        </Box>
+        <Box display='flex' justifyContent='center' mt={4}>
+          <Pagination
+            count={data?.totalPages || 1}
+            siblingCount={2}
+            page={page}
+            size='large'
+            onChange={handleChange}
+          />
+        </Box>
+      </Container>
+    </>
   );
 }
