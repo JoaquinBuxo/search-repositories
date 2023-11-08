@@ -35,7 +35,7 @@ export default function Home() {
         <Box my={4}>
           <RepositoryList repositories={data?.data || []} />
         </Box>
-        <Box display='flex' justifyContent='center' mt={4}>
+        <Box display='flex' justifyContent='center' mt={4} mb={4}>
           <Pagination
             count={data?.totalPages || 1}
             siblingCount={2}

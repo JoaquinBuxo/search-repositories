@@ -1,6 +1,6 @@
 const API_BASE_URL = 'https://api.github.com';
 
-const MAX_RESULTS = 1200;
+const MAX_RESULTS = 1000;
 
 export const fetchRepositories = async (
   query: string,
