@@ -8,31 +8,18 @@ import { Pagination, Container, Box, Typography } from '@mui/material';
 import { useContextRepository } from './context/RepositoryContext';
 
 export default function Home() {
-  const { query, page, data, setPage, isLoading, isError, error } =
-    useContextRepository();
+  const { page, data, setPage } = useContextRepository();
 
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
   };
-
-  if (isError) return <p>Error: {error.message}</p>;
 
   return (
     <>
       <Header />
       <Container maxWidth='xl'>
         <Box my={4}>
-          {isLoading ? (
-            <LoadingList />
-          ) : data?.data.length ? (
-            <RepositoryList repositories={data.data} />
-          ) : (
-            <Typography variant='h6' color='textSecondary' align='center'>
-              {query
-                ? 'No results found. Please try another search.'
-                : 'Please enter a search term to start.'}
-            </Typography>
-          )}
+          <RepositoryList />
         </Box>
         {data && data.totalPages > 1 && (
           <Box display='flex' justifyContent='center' mt={4} mb={4}>
