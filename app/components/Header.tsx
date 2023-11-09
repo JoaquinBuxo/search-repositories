@@ -1,10 +1,7 @@
-import { useState } from 'react';
 import { AppBar } from '@mui/material';
 import SearchBar from './SearchBar';
 
 const Header = () => {
-  const [query, setQuery] = useState('');
-
   return (
     <AppBar
       position='static'

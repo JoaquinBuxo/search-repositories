@@ -53,7 +53,16 @@ const RepositoryCard: React.FC<RepositoryCardProps> = ({ repository }) => {
             {repository.description}
           </Typography>
           {repository.topics.length > 0 && (
-            <Typography variant='body2' color='text.secondary'>
+            <Typography
+              variant='body2'
+              color='text.secondary'
+              sx={{
+                display: '-webkit-box',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+              }}
+            >
               Topics: {repository.topics.join(', ')}
             </Typography>
           )}
