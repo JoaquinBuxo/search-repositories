@@ -12,7 +12,8 @@ export const fetchRepositories = async (
       `${API_BASE_URL}/search/repositories?q=${query}&page=${pageParam}&per_page=${itemsPerPage}`
     );
     if (!response.ok) {
-      throw new Error('Network response was not ok');
+      const errorData = await response.json();
+      throw new Error(errorData.message);
     }
     const data = await response.json();
     const totalResults = Math.min(data.total_count, MAX_RESULTS); // Limit to MAX_RESULTS results
