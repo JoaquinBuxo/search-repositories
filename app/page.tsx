@@ -1,24 +1,15 @@
 'use client';
 
-import { useState } from 'react';
-import { useRepositories } from './hooks/useRepositories';
-import SearchBar from './components/SearchBar';
+import Header from './components/Header';
 import RepositoryList from './components/RepositoryList';
-import {
-  Pagination,
-  Container,
-  AppBar,
-  Toolbar,
-  Box,
-  Typography,
-} from '@mui/material';
-import SkeletonCard from './components/SkeletonCard';
 import LoadingList from './components/LoadingList';
+import { Pagination, Container, Box, Typography } from '@mui/material';
+
+import { useContextRepository } from './context/RepositoryContext';
 
 export default function Home() {
-  const [query, setQuery] = useState('');
-  const [page, setPage] = useState(1);
-  const { data, isLoading, isError, error } = useRepositories(query, page);
+  const { query, page, data, setPage, isLoading, isError, error } =
+    useContextRepository();
 
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
@@ -28,17 +19,7 @@ export default function Home() {
 
   return (
     <>
-      <AppBar
-        position='static'
-        sx={{ backgroundColor: '#F6F8FA', border: '1px solid #D9DFE4' }}
-        elevation={0}
-      >
-        <Toolbar>
-          <Box width='100%' px={2}>
-            <SearchBar onSearch={setQuery} />
-          </Box>
-        </Toolbar>
-      </AppBar>
+      <Header />
       <Container maxWidth='xl'>
         <Box my={4}>
           {isLoading ? (

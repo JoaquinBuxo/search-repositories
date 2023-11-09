@@ -1,19 +1,18 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { FormEvent } from 'react';
 import { Container, Paper, InputBase, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import { useContextRepository } from '../context/RepositoryContext';
 
-type SearchBarProps = {
-  onSearch: (query: string) => void;
-};
+const SearchBar = () => {
+  const { setQuery } = useContextRepository();
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
-  const [query, setQuery] = useState('');
-
-  const handleSubmit = (event: FormEvent) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    onSearch(query);
+    const form = event.currentTarget;
+    const input = form.elements.namedItem('search') as HTMLInputElement;
+    setQuery(input.value);
   };
 
   return (
@@ -30,10 +29,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         onSubmit={handleSubmit}
       >
         <InputBase
+          name='search'
           sx={{ ml: 1, flex: 1 }}
           placeholder='Search Github Repositories'
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
         />
         <IconButton type='submit' sx={{ p: '4px' }} aria-label='search'>
           <SearchIcon />
