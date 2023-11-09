@@ -1,7 +1,7 @@
 'use client';
 
 import { Box, Pagination, useMediaQuery, useTheme } from '@mui/material';
-import { useContextRepository } from '../context/RepositoryContext';
+import { useContextRepository } from '../hooks/useContextRepository';
 
 const Footer = () => {
   const { page, setPage, data } = useContextRepository();

@@ -4,7 +4,7 @@ import { createContext, useContext, useState } from 'react';
 import { useFetchRepositories } from '../hooks/useFetchRepositories';
 import { RepositoryContextType } from './types';
 
-const RepositoryContext = createContext({} as RepositoryContextType);
+export const RepositoryContext = createContext({} as RepositoryContextType);
 
 export const RepositoryProvider = ({
   children,
@@ -31,8 +31,4 @@ export const RepositoryProvider = ({
       {children}
     </RepositoryContext.Provider>
   );
-};
-
-export const useContextRepository = () => {
-  return useContext(RepositoryContext);
 };

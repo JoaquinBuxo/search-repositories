@@ -2,7 +2,7 @@
 
 import { Repository } from '../types';
 import { Grid, Typography } from '@mui/material';
-import { useContextRepository } from '../context/RepositoryContext';
+import { useContextRepository } from '../hooks/useContextRepository';
 import RepositoryCard from './RepositoryCard';
 import LoadingList from './LoadingList';
 

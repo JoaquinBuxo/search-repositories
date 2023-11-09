@@ -3,7 +3,7 @@
 import { FormEvent } from 'react';
 import { Container, Paper, InputBase, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import { useContextRepository } from '../context/RepositoryContext';
+import { useContextRepository } from '../hooks/useContextRepository';
 
 const SearchBar = () => {
   const { setQuery } = useContextRepository();
