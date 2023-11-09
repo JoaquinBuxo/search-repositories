@@ -9,7 +9,7 @@ import LoadingList from './LoadingList';
 const RepositoryList = () => {
   const { query, data, isLoading, isError, error } = useContextRepository();
 
-  const repositories = data?.data;
+  const repositories = data?.data as Repository[];
 
   if (isLoading) return <LoadingList />;
 
