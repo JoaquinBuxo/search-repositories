@@ -8,9 +8,7 @@ export default function Home() {
     <>
       <Header />
       <Container maxWidth='xl'>
-        <Box my={4}>
-          <RepositoryList />
-        </Box>
+        <RepositoryList />
       </Container>
       <Footer />
     </>

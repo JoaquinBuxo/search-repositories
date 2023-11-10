@@ -32,7 +32,7 @@ const RepositoryList = () => {
   }
 
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={3} my={2}>
       {repositories.map((repository: Repository) => (
         <Grid item xs={12} sm={6} md={3} key={repository.id}>
           <RepositoryCard repository={repository} />

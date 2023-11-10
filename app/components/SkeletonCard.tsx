@@ -1,4 +1,7 @@
+import { Fragment } from 'react';
 import { Card, CardHeader, CardContent, Skeleton } from '@mui/material';
+
+const NUM_SKELETON_CONTENT = 3;
 
 const SkeletonCard = () => {
   return (
@@ -17,33 +20,23 @@ const SkeletonCard = () => {
             animation='wave'
             height={10}
             width='80%'
-            style={{ marginBottom: 6 }}
+            sx={{ marginBottom: 2 }}
           />
         }
         subheader={<Skeleton animation='wave' height={10} width='40%' />}
       />
       <CardContent>
-        <Skeleton animation='wave' height={10} />
-        <Skeleton
-          animation='wave'
-          height={10}
-          width='80%'
-          style={{ marginBottom: 6 }}
-        />
-        <Skeleton animation='wave' height={10} />
-        <Skeleton
-          animation='wave'
-          height={10}
-          width='80%'
-          style={{ marginBottom: 6 }}
-        />
-        <Skeleton animation='wave' height={10} />
-        <Skeleton
-          animation='wave'
-          height={10}
-          width='80%'
-          style={{ marginBottom: 6 }}
-        />
+        {Array.from({ length: NUM_SKELETON_CONTENT }).map((_, index) => (
+          <Fragment key={index}>
+            <Skeleton animation='wave' height={10} />
+            <Skeleton
+              animation='wave'
+              height={10}
+              width='80%'
+              sx={{ marginBottom: 2 }}
+            />
+          </Fragment>
+        ))}
       </CardContent>
     </Card>
   );
