@@ -12,7 +12,9 @@ const SearchBar = () => {
     event.preventDefault();
     const form = event.currentTarget;
     const input = form.elements.namedItem('search') as HTMLInputElement;
-    setQuery(input.value);
+    if (input.value.trim() !== '') {
+      setQuery(input.value);
+    }
   };
 
   return (
@@ -27,6 +29,7 @@ const SearchBar = () => {
           border: '1px solid #D9DFE4',
         }}
         onSubmit={handleSubmit}
+        data-testid='search-form'
       >
         <InputBase
           name='search'
