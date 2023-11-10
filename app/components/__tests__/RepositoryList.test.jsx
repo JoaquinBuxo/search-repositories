@@ -10,7 +10,7 @@ jest.mock('../../hooks/useContextRepository', () => ({
 describe('RepositoryList', () => {
   test('displays LoadingList during loading', () => {
     // Simulate isLoading true
-    (useContextRepository as jest.Mock).mockReturnValueOnce({
+    useContextRepository.mockReturnValueOnce({
       isLoading: true,
     });
 
@@ -21,7 +21,7 @@ describe('RepositoryList', () => {
   });
 
   test('displays error message in case of error', () => {
-    (useContextRepository as jest.Mock).mockReturnValueOnce({
+    useContextRepository.mockReturnValueOnce({
       isError: true,
       error: { message: 'Error message' },
     });
@@ -31,7 +31,7 @@ describe('RepositoryList', () => {
   });
 
   test('displays no results search message', () => {
-    (useContextRepository as jest.Mock).mockReturnValueOnce({
+    useContextRepository.mockReturnValueOnce({
       repositories: [],
       query: 'searchQuery',
     });
@@ -43,7 +43,7 @@ describe('RepositoryList', () => {
   });
 
   test('displays start message without search term', () => {
-    (useContextRepository as jest.Mock).mockReturnValueOnce({
+    useContextRepository.mockReturnValueOnce({
       repositories: [],
     });
 

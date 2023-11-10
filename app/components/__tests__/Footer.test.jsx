@@ -12,7 +12,7 @@ describe('Footer component', () => {
   const mockSetPage = jest.fn();
 
   beforeEach(() => {
-    (useContextRepository as jest.Mock).mockReturnValue({
+    useContextRepository.mockReturnValue({
       page: 1,
       setPage: mockSetPage,
       data: { totalPages: 5 },

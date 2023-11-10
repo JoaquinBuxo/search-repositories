@@ -19,7 +19,6 @@ const Footer = () => {
         justifyContent='center'
         mt={4}
         mb={4}
-        position={isMobile ? 'relative' : 'fixed'}
         bottom={0}
         width='100%'
       >
@@ -29,6 +28,7 @@ const Footer = () => {
           page={page}
           size={isMobile ? 'medium' : 'large'}
           onChange={handleChange}
+          data-testid='pagination'
         />
       </Box>
     )

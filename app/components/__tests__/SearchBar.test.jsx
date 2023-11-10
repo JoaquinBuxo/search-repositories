@@ -10,7 +10,7 @@ jest.mock('../../hooks/useContextRepository', () => ({
 describe('SearchBar', () => {
   test('updates the query on form submission', () => {
     const setQueryMock = jest.fn();
-    (useContextRepository as jest.Mock).mockReturnValueOnce({
+    useContextRepository.mockReturnValueOnce({
       setQuery: setQueryMock,
     });
 
@@ -28,7 +28,7 @@ describe('SearchBar', () => {
 
   test('prevents default form submission behavior', () => {
     const setQueryMock = jest.fn();
-    (useContextRepository as jest.Mock).mockReturnValueOnce({
+    useContextRepository.mockReturnValueOnce({
       setQuery: setQueryMock,
     });
 
