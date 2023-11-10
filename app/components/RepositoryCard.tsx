@@ -16,7 +16,7 @@ type RepositoryCardProps = {
 
 const RepositoryCard: React.FC<RepositoryCardProps> = ({ repository }) => {
   return (
-    <Card sx={{ height: '100%' }}>
+    <Card sx={{ height: '100%' }} data-testid='repository-card'>
       <CardActionArea
         component='a'
         href={repository.html_url}
