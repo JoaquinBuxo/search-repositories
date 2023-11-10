@@ -4,7 +4,7 @@ import { useContextRepository } from '../../hooks/useContextRepository';
 import Footer from '../Footer';
 
 // Mock the useContextRepository hook
-jest.mock('../../context/RepositoryContext', () => ({
+jest.mock('../../hooks/useContextRepository', () => ({
   useContextRepository: jest.fn(),
 }));
 
